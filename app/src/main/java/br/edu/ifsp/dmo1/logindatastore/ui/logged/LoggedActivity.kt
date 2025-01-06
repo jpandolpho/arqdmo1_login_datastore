@@ -1,21 +1,21 @@
 package br.edu.ifsp.dmo1.logindatastore.ui.logged
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import br.edu.ifsp.dmo1.logindatastore.R
+import androidx.lifecycle.ViewModelProvider
+import br.edu.ifsp.dmo1.logindatastore.databinding.ActivityLoggedBinding
 
 class LoggedActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoggedBinding
+    private lateinit var viewModel: LoggedViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_logged)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding = ActivityLoggedBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this).get(LoggedViewModel::class.java)
+        binding.textMessage.setText("Bem-Vindo")
     }
+
 }
