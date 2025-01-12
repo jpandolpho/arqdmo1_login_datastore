@@ -34,12 +34,12 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewModel.loginPreferences.observe(this, Observer {
-            val (saveLogin, stayLoggeIn) = it
-            if (stayLoggeIn) {
+            val (saveLogin, stayLoggedIn) = it
+            if (stayLoggedIn) {
                 navigateToLoggedActivity()
             }
             binding.checkboxSaveLogin.isChecked = saveLogin
-            binding.checkboxStayLoggedin.isChecked = stayLoggeIn
+            binding.checkboxStayLoggedin.isChecked = stayLoggedIn
         })
 
         viewModel.dataPreferences.observe(this, Observer {
